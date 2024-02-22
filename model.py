@@ -49,6 +49,7 @@ class ModelArgs:
             self.dt_rank = math.ceil(self.d_model / 16)
             
         if self.vocab_size % self.pad_vocab_size_multiple != 0:
+            
             self.vocab_size += (self.pad_vocab_size_multiple
                                 - self.vocab_size % self.pad_vocab_size_multiple)
 
