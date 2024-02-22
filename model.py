@@ -219,7 +219,7 @@ class MambaBlock(nn.Module):
             
         """
         (b, l, d) = x.shape
-        
+        ##### DIS-bidirectional start here 
         x_and_res = self.in_proj(x)  # shape (b, l, 2 * d_in)
         (x, res) = x_and_res.split(split_size=[self.args.d_inner, self.args.d_inner], dim=-1)
 
@@ -232,7 +232,7 @@ class MambaBlock(nn.Module):
         y = self.ssm(x)
         
         y = y * F.silu(res)
-        
+        ##### DIS-bidirectional end here, and sum up the forward and backward pass, and feed them into the self.out_proj 
         output = self.out_proj(y)
 
         return output
