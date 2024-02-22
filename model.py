@@ -219,7 +219,8 @@ class MambaBlock(nn.Module):
             
         """
         (b, l, d) = x.shape
-        ##### DIS-bidirectional start here 
+        ##### DIS-bidirectional start here ,
+        ##### DIS, VIVIM, Swin-UMamba all sharing the same codebases.
         x_and_res = self.in_proj(x)  # shape (b, l, 2 * d_in)
         (x, res) = x_and_res.split(split_size=[self.args.d_inner, self.args.d_inner], dim=-1)
 
